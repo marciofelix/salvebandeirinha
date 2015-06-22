@@ -1,2 +1,2 @@
-# SalveBandeirinha
-SalveBandeirinha Dota 2 mod
+# salvebandeirinha
+salvebandeirinha dota 2 mod
