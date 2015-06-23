@@ -73,3 +73,25 @@ function leaveBadArea(trigger)
   --DOTA_UNIT_CAP_MOVE_FLY	2
 	--unit:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
 end
+
+function enterGoodAreaBack(trigger)
+  local unit = trigger.activator
+	print("entrou-fundo")
+	print(unit:GetUnitName())
+	print(unit:GetTeamNumber())
+	if unit:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
+	  unit:AddNewModifier(unit, nil, "modifier_invulnerable", {})
+  end
+end
+
+function enterBadAreaBack(trigger)
+  local unit = trigger.activator
+	print("entrou-bad fundo")
+	print(unit:GetUnitName())
+	print(unit:GetTeamNumber())
+	if unit:GetTeamNumber() == DOTA_TEAM_BADGUYS then
+	  unit:AddNewModifier(unit, nil, "modifier_invulnerable", {})
+  end
+end
+
+

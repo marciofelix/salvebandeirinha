@@ -17,7 +17,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"9999"
 		"ItemShopTags"				"damage"
-		"ItemQuality"					"epic"
+		"ItemQuality"					"rare"
 		"ItemAliases"					"radiant flag"
 		"ItemShareability"		"ITEM_FULLY_SHAREABLE"
 		"ItemSellable"				"0"
@@ -33,6 +33,21 @@
 				"Target"			    "CASTER"
 				"ModifierName"		"the_weight_good_flag"
 			}
+		}
+		"OnEquip"
+		{
+		  "DelayedAction"
+		  {
+		    "Delay"			"0.1"
+		    "Action"
+		    {
+          "RunScript"
+          {
+            "ScriptFile"      "items.lua"
+            "Function"        "pickOrReturnGoodFlag"
+          }
+        }
+      }
 		}
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -74,7 +89,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"					  "9999"
 		"ItemShopTags"				"damage"
-		"ItemQuality"					"epic"
+		"ItemQuality"					"artifact"
 		"ItemAliases"					"dire flag"
 		"ItemShareability"		"ITEM_FULLY_SHAREABLE"
 		"ItemSellable"				"0"
@@ -90,6 +105,21 @@
 				"Target"			    "CASTER"
 				"ModifierName"		"the_weight_bad_flag"
 			}
+		}
+		"OnEquip"
+		{
+		  "DelayedAction"
+		  {
+		    "Delay"			"0.1"
+		    "Action"
+		    {
+          "RunScript"
+          {
+            "ScriptFile"      "items.lua"
+            "Function"        "pickOrReturnBadFlag"
+          }
+        }
+      }
 		}
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------

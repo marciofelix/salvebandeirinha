@@ -3,9 +3,11 @@
 {
 //  "item_boots"                            "REMOVE"
 //  "item_phase_boots"                      "REMOVE"
+//  "item_recipe_phase_boots"               "REMOVE"
 //  "item_blink"                            "REMOVE"
 //  "item_ward_observer"                    "REMOVE"
 //  "item_ward_sentry"                      "REMOVE"
+//  "item_blades_of_attack"                 "REMOVE"
 	// ITEM SHOPS---------------------------------------------------
   "item_recipe_travel_boots_2"            "REMOVE"
   "item_travel_boots_2"                   "REMOVE"
@@ -18,7 +20,6 @@
 	"item_octarine_core"                    "REMOVE"
 	"item_moon_shard"                       "REMOVE"
 	"item_silver_edge"                      "REMOVE"
-  "item_blades_of_attack"                 "REMOVE"
   "item_broadsword"                       "REMOVE"
   "item_chainmail"                        "REMOVE"
   "item_claymore"                         "REMOVE"
@@ -64,7 +65,6 @@
   "item_tpscroll"                         "REMOVE"
   "item_recipe_travel_boots"              "REMOVE"
   "item_travel_boots"                     "REMOVE"
-  "item_recipe_phase_boots"               "REMOVE"
   "item_demon_edge"                       "REMOVE"
   "item_eagle"                            "REMOVE"
   "item_reaver"                           "REMOVE"
