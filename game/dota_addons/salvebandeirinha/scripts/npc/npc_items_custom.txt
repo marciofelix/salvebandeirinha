@@ -1,80 +1,56 @@
 "DOTAAbilities"
 {
+  //=================================================================================================================
+	// Good Flag
 	//=================================================================================================================
-	// Recipe: Arcane Boots
-	//=================================================================================================================
-	"item_recipe_arcane_boots2"
+	"item_capture_good_flag"
 	{
-		"ID"							"1005"
-
-		"BaseClass"						"item_recipe_arcane_boots"
-
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"0"	
-		"ItemShopTags"					""
-		
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_arcane_boots2"
-		"ItemRequirements"
-		{
-			"01"						"item_energy_booster;item_arcane_boots"
-		}
-	}
-	
-	//=================================================================================================================
-	// Arcane Boots II
-	//=================================================================================================================
-	"item_arcane_boots2"
-	{
-		"ID"							"1006"
-
+	  "BaseClass"           "item_datadriven"
+	  "AbilityTextureName"  "capture_good_flag"
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"BaseClass"						"item_arcane_boots"
-
-		// Stats		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"55.0"
+		"ID"							    "1101"
+		"AbilityBehavior"	  	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Model"							  "models\props_teams\banner_radiant.mdl"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"25"
-		"ItemCost"						"2450"
-		"ItemShopTags"					"move_speed;boost_mana;mana_pool"
-		"ItemQuality"					"rare"
-		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemDisassembleRule"			"0"
-		"ItemAlertable"					"1"
-		"ItemAliases"					"mana;mb"
-		
-		// Special	
+		"ItemCost"						"9999"
+		"ItemShopTags"				"damage"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"radiant flag"
+		"ItemShareability"		"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"				"0"
+		"ItemKillable"				"0"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS | DECLARE_PURCHASES_IN_SPEECH"
+		"ItemContributesToNetWorthWhenDropped"	"0"
+		"ItemDroppable"				"1"
+	}
+	
+  //=================================================================================================================
+	// Bad Flag
+	//=================================================================================================================
+	"item_capture_bad_flag"
+	{
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"	"capture_bad_flag"
+		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_movement"		"75"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_mana"			"500"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"replenish_radius"		"600"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"replenish_amount"		"250"
-			}
-		}
+		"ID"							    "1102"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Model"							  "models\props_teams\banner_dire_small.mdl"
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"					  "9999"
+		"ItemShopTags"				"damage"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"dire flag"
+		"ItemShareability"		"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"				"0"
+		"ItemKillable"				"0"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS | DECLARE_PURCHASES_IN_SPEECH"
+		"ItemContributesToNetWorthWhenDropped"	"0"
+		"ItemDroppable"				"1"
 	}
 }
+

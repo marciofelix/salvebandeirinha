@@ -1,0 +1,76 @@
+//<map_name>_shops.txt inside a scripts\shops\ folder
+ 
+"dota_shops"
+{
+        "consumables"
+        {
+          "item"  "item_ward_observer"
+          "item"  "item_ward_sentry"
+        }
+ 
+        "attributes"
+        {
+        
+        }
+ 
+        "weapons_armor"
+        {
+          "item"  "item_boots"
+          "item"  "item_phase_boots"
+          "item"  "item_blink"
+        }
+ 
+        "misc"
+        {
+          
+        }      
+ 
+        // Level 1 - Green Recipes
+        "basics"
+        {
+   
+        }
+ 
+        // Level 2 - Blue Recipes
+        "support"
+        {
+ 
+        }
+ 
+        "magics"
+        {
+       
+        }
+ 
+        // Level 3 - Purple Recipes
+        "defense"
+        {
+       
+        }
+ 
+        "weapons"
+        {
+               
+        }
+ 
+        // Level 4 - Orange / Orb / Artifacts
+        "artifacts"
+        {
+               
+        }
+ 
+        "sideshop1"
+        {
+ 
+        }
+ 
+        "sideshop2"
+        {
+ 
+        }
+ 
+        "secretshop"
+        {
+ 
+        }
+}
