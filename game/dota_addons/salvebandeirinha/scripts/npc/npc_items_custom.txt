@@ -25,6 +25,37 @@
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS | DECLARE_PURCHASES_IN_SPEECH"
 		"ItemContributesToNetWorthWhenDropped"	"0"
 		"ItemDroppable"				"1"
+		
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"			    "CASTER"
+				"ModifierName"		"the_weight_good_flag"
+			}
+		}
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"Modifiers"
+		{
+			"the_weight_good_flag"
+			{
+				"Passive" "1"
+				
+				"Properties"
+				{
+				  "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"		"%movespeed_bonus"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movespeed_bonus"		"-30"
+			}
+		}
 	}
 	
   //=================================================================================================================
@@ -51,6 +82,37 @@
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS | DECLARE_PURCHASES_IN_SPEECH"
 		"ItemContributesToNetWorthWhenDropped"	"0"
 		"ItemDroppable"				"1"
+		
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"			    "CASTER"
+				"ModifierName"		"the_weight_bad_flag"
+			}
+		}
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"Modifiers"
+		{
+			"the_weight_bad_flag"
+			{
+				"Passive" "1"
+				
+				"Properties"
+				{
+				  "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"		"%movespeed_bonus"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movespeed_bonus"		"-30"
+			}
+		}
 	}
 }
 
