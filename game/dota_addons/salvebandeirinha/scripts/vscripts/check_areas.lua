@@ -14,7 +14,7 @@ function enterGoodArea(trigger)
           UTIL_RemoveImmediate(item)
           print("ponto para Radiant")
           score.Good = score.Good + 1
-          CAddonTemplateGameMode:updateScore(score.Good, score.Bad)
+          GM:updateScore(score.Good, score.Bad)
           -- aqui tem que resetar jogadores e flags
           spawnBadFlag()
         end
@@ -37,7 +37,7 @@ function enterBadArea(trigger)
           UTIL_RemoveImmediate(item)
           print("ponto para Dire")
           score.Bad = score.Bad + 1
-          CAddonTemplateGameMode:updateScore(score.Good, score.Bad)
+          GM:updateScore(score.Good, score.Bad)
           -- aqui tem que resetar jogadores e flags
           spawnGoodFlag()
         end
@@ -64,14 +64,6 @@ function leaveBadArea(trigger)
 	if unit:GetTeamNumber() == DOTA_TEAM_BADGUYS then
 	  unit:RemoveModifierByName("modifier_invulnerable")
 	end
-	--CastAbilityOnTarget(handle target, handle ability, int playerIndex)
-	--void SetMoveCapability(int iMoveCapabilities)
-	--DOTAUnitMoveCapability_t
-  --Name	Value	Description
-  --DOTA_UNIT_CAP_MOVE_NONE	0	
-  --DOTA_UNIT_CAP_MOVE_GROUND	1
-  --DOTA_UNIT_CAP_MOVE_FLY	2
-	--unit:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
 end
 
 function enterGoodAreaBack(trigger)

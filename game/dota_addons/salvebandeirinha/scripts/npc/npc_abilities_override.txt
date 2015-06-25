@@ -1,6 +1,54 @@
 // Dota Abilities Override File
 "DOTAAbilities"
 {
+
+	//=================================================================================================================
+	// Blink dagger
+	//=================================================================================================================
+	"item_blink"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"15.0"
+		"AbilityManaCost"				"0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"2000"
+		"ItemShopTags"			  "teleport"
+		"ItemQuality"					"component"
+		"ItemAliases"					"blink dagger"
+		"SideShop"						"1"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"blink_range"			"400"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"blink_damage_cooldown"	"3.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"blink_range_clamp"	"360"
+			}
+		}
+	}
 //  "item_boots"                            "REMOVE"
 //  "item_phase_boots"                      "REMOVE"
 //  "item_recipe_phase_boots"               "REMOVE"
@@ -157,6 +205,7 @@
   "item_recipe_hood_of_defiance"          "REMOVE"
   "item_hood_of_defiance"                 "REMOVE"
   "item_recipe_rapier"                    "REMOVE"
+
   "item_rapier"                           "REMOVE"
   "item_recipe_monkey_king_bar"           "REMOVE"
   "item_monkey_king_bar"                  "REMOVE"
