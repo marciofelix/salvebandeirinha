@@ -1,6 +1,7 @@
 -- Generated from template
 if GM == nil then
   GM = class({})
+  GM.playersAssigned = false
 end
 
 if score == nil then
@@ -9,10 +10,20 @@ if score == nil then
   score.Good = 0
 end
 
-function Precache( context )
+if CONSTANTS == nil then
+  CONSTANTS = {}
+  CONSTANTS.scoreToWin = 5
+  CONSTANTS.goodGuysHero = "npc_dota_hero_dragon_knight"
+  CONSTANTS.badGuysHero = "npc_dota_hero_sven"
+end
+
+function Precache(context)
   PrecacheItemByNameSync("item_capture_good_flag", context)
   PrecacheItemByNameSync("item_capture_bad_flag", context)
+  PrecacheUnitByNameSync("custom_good_guys_hero", context)
+  PrecacheUnitByNameSync("custom_bad_guys_hero", context)
   PrecacheUnitByNameSync("npc_dota_hero_dragon_knight", context)
+  PrecacheUnitByNameSync("npc_dota_hero_sven", context)
   --[[
     Precache things we know we'll use.  Possible file types include (but not limited to):
       PrecacheResource( "model", "*.vmdl", context )
@@ -47,11 +58,14 @@ function GM:InitGameMode()
   GameRules:SetHeroRespawnEnabled(true)
   GameRules:SetUseUniversalShopMode(true)
   GameRules:SetSameHeroSelectionEnabled(true)
-  GameRules:SetHeroSelectionTime(15.0)
+  GameRules:SetHeroSelectionTime(0.0)
   GameRules:SetPreGameTime(0.0)
-  GameRules:SetPostGameTime(30.0)
-  --GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS || DOTA_TEAM_BADGUYS) -- faz um time perder. acho que vamos precisar.
+  GameRules:SetPostGameTime(5.0)
   
+  print("[Salve Bandeirinha] Gamemode rules are set.")
+  print("[Salve Bandeirinha] Gamemode rules are set.")
+  print("[Salve Bandeirinha] Gamemode rules are set.")
+  print("[Salve Bandeirinha] Gamemode rules are set.")
   print("[Salve Bandeirinha] Gamemode rules are set.")
 
   --
@@ -66,10 +80,28 @@ function GM:InitGameMode()
   GameRules:GetGameModeEntity():SetThink("OnThink", self, "GlobalThink", 2)
 end
 
+function GM:assignPlayers()
+  print("Assigning heroes for all players...")
+  GM.playersAssigned = true
+  for i = 1,11 do
+    local player = PlayerInstanceFromIndex(i)
+
+    if player ~= nil then
+      if player:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
+        CreateHeroForPlayer(CONSTANTS.goodGuysHero, player)
+      else 
+        CreateHeroForPlayer(CONSTANTS.badGuysHero, player)
+      end
+    end
+  end
+end
+
 -- Evaluate the state of the game
 function GM:OnThink()
   if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-    --print("[Salve Bandeirinha] Template addon script is running.")
+    if GM.playersAssigned == false then
+      GM:assignPlayers()
+    end
   elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
     return nil
   end
@@ -152,22 +184,18 @@ function GM:OnEntityHurt(keys)
 end
 
 function GM:updateScore(scoreGood, scoreBad)
-  print("entrou update score")
-  print(scoreGood)
-  print(scoreBad)
+  print("Updating score: " .. scoreGood .. " x " .. scoreBad)
 
   local GameMode = GameRules:GetGameModeEntity()
   GameMode:SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, scoreGood)
   GameMode:SetTopBarTeamValue(DOTA_TEAM_BADGUYS, scoreBad)
 
-  -- If any team reaches this score the game ends and that team is considered
-  -- winner.
-  local SCORE_TO_WIN = 5
-  if scoreGood == SCORE_TO_WIN then
+  -- If any team reaches scoreToWin, the game ends and that team is considered winner.
+  if scoreGood == CONSTANTS.scoreToWin then
     print("Team GOOD GUYS victory!")
     GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
   end
-  if scoreBad == SCORE_TO_WIN then
+  if scoreBad == CONSTANTS.scoreToWin then
     print("Team BAD GUYS victory!")
     GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
   end

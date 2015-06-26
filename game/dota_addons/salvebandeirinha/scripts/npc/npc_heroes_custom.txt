@@ -3,18 +3,29 @@
 // the specified key-value combinations.  Use override_hero <hero_to_override> for this.
 "DOTAHeroes"
 {
-	//=================================================================================================================
-	// HERO: Dragon Knight
-	//=================================================================================================================
-	"npc_dota_hero_dragon_knight"
-	{
-		"override_hero"				    "npc_dota_hero_dragon_knight"			// Hero to override
-		"Ability1"					      "REMOVE"
-		"Ability2"					      "REMOVE"
-		"Ability3"					      "REMOVE"
-		"Ability4"					      "REMOVE"
-		"Ability5"					      "REMOVE"
-		"VisionDaytimeRange"		  "800"
-		"VisionNighttimeRange"		"700"
-	}
+    "npc_dota_hero_dragon_knight"
+    {
+        "override_hero"             "npc_dota_hero_dragon_knight"  // Hero to override
+        "Model"                     "models/heroes/dragon_knight/dragon_knight.vmdl"
+        "Ability1"                  "REMOVE"
+        "Ability2"                  "REMOVE"
+        "Ability3"                  "REMOVE"
+        "Ability4"                  "REMOVE"
+        "Ability5"                  "REMOVE"
+        "VisionDaytimeRange"        "1200"  // for debugging
+        "VisionNighttimeRange"      "1200"
+    }
+
+    "npc_dota_hero_sven"
+    {
+        "override_hero"             "npc_dota_hero_sven"
+        "Model"                     "models/heroes/sven/sven.vmdl"
+        "Ability1"                  "REMOVE"
+        "Ability2"                  "REMOVE"
+        "Ability3"                  "REMOVE"
+        "Ability4"                  "REMOVE"
+        "Ability5"                  "REMOVE"
+        "VisionDaytimeRange"        "1200"
+        "VisionNighttimeRange"      "1200"
+    }
 }
