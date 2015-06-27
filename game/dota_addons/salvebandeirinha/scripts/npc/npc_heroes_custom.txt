@@ -12,8 +12,26 @@
         "Ability3"                  "REMOVE"
         "Ability4"                  "REMOVE"
         "Ability5"                  "REMOVE"
-        "VisionDaytimeRange"        "1200"  // for debugging
-        "VisionNighttimeRange"      "1200"
+        "VisionDaytimeRange"        "1200"
+        "VisionNighttimeRange"      "1000"
+        // attack
+        "AttackDamageMin"           "1"
+        "AttackDamageMax"           "1"
+        "AttackRate"                "2"
+        "AttackAnimationPoint"      "0.5"
+        "AttackRange"               "90"
+        // speed
+        "MovementSpeed"             "290"
+        "MovementTurnRate"          "0.6"
+        // regen
+        "StatusHealthRegen"			    "150"
+        // attributes
+        "AttributeBaseStrength"     "10"
+        "AttributeBaseAgility"      "10"
+        "AttributeBaseIntelligence" "10"
+        // armor
+        "ArmorPhysical"				      "0"
+			  "MagicalResistance"				  "0"
     }
 
     "npc_dota_hero_sven"
@@ -26,6 +44,24 @@
         "Ability4"                  "REMOVE"
         "Ability5"                  "REMOVE"
         "VisionDaytimeRange"        "1200"
-        "VisionNighttimeRange"      "1200"
+        "VisionNighttimeRange"      "1000"
+        // attack
+        "AttackDamageMin"           "1"
+        "AttackDamageMax"           "1"
+        "AttackRate"                "2"
+        "AttackAnimationPoint"      "0.5"
+        "AttackRange"               "90"
+        // speed
+        "MovementSpeed"             "290"
+        "MovementTurnRate"          "0.6"
+        // regen
+        "StatusHealthRegen"			    "150"
+        // attributes
+        "AttributeBaseStrength"     "10"
+        "AttributeBaseAgility"      "10"
+        "AttributeBaseIntelligence" "10"
+        // armor
+        "ArmorPhysical"				      "0"
+			  "MagicalResistance"				  "0"
     }
 }

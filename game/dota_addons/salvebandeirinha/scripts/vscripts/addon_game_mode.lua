@@ -17,20 +17,14 @@ if CONSTANTS == nil then
   CONSTANTS.badGuysHero = "npc_dota_hero_sven"
 end
 
+--Precache things we know we'll use.
 function Precache(context)
   PrecacheItemByNameSync("item_capture_good_flag", context)
   PrecacheItemByNameSync("item_capture_bad_flag", context)
-  PrecacheUnitByNameSync("custom_good_guys_hero", context)
-  PrecacheUnitByNameSync("custom_bad_guys_hero", context)
-  PrecacheUnitByNameSync("npc_dota_hero_dragon_knight", context)
-  PrecacheUnitByNameSync("npc_dota_hero_sven", context)
-  --[[
-    Precache things we know we'll use.  Possible file types include (but not limited to):
-      PrecacheResource( "model", "*.vmdl", context )
-      PrecacheResource( "soundfile", "*.vsndevts", context )
-      PrecacheResource( "particle", "*.vpcf", context )
-      PrecacheResource( "particle_folder", "particles/folder", context )
-  ]]
+	PrecacheResource("model_folder", "models/heroes/dragon_knight", context)
+	PrecacheResource("model_folder", "models/items/dragon_knight", context)
+	PrecacheResource("model_folder", "models/heroes/sven", context)
+	PrecacheResource("model_folder", "models/items/sven", context)
 end
 
 -- Create the game mode when we activate
