@@ -17,14 +17,20 @@ if CONSTANTS == nil then
   CONSTANTS.badGuysHero = "npc_dota_hero_sven"
 end
 
---Precache things we know we'll use.
+-- Precache things we know we'll use.
 function Precache(context)
+  -- Flag models.
   PrecacheItemByNameSync("item_capture_good_flag", context)
   PrecacheItemByNameSync("item_capture_bad_flag", context)
+
+  -- Hero Models.
 	PrecacheResource("model_folder", "models/heroes/dragon_knight", context)
 	PrecacheResource("model_folder", "models/items/dragon_knight", context)
 	PrecacheResource("model_folder", "models/heroes/sven", context)
 	PrecacheResource("model_folder", "models/items/sven", context)
+
+  -- Particle effect applied to the flag holder.
+  PrecacheResource("particle", "particles/econ/courier/courier_golden_roshan/golden_roshan_ambient.vpcf", context)
 end
 
 -- Create the game mode when we activate
