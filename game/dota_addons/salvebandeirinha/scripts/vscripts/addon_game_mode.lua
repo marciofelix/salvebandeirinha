@@ -15,6 +15,7 @@ if CONSTANTS == nil then
   CONSTANTS.scoreToWin = 5
   CONSTANTS.goodGuysHero = "npc_dota_hero_dragon_knight"
   CONSTANTS.badGuysHero = "npc_dota_hero_sven"
+  CONSTANTS.goldForPoint = 150
 end
 
 -- Precache things we know we'll use.
@@ -24,10 +25,10 @@ function Precache(context)
   PrecacheItemByNameSync("item_capture_bad_flag", context)
 
   -- Hero Models.
-	PrecacheResource("model_folder", "models/heroes/dragon_knight", context)
-	PrecacheResource("model_folder", "models/items/dragon_knight", context)
-	PrecacheResource("model_folder", "models/heroes/sven", context)
-	PrecacheResource("model_folder", "models/items/sven", context)
+  PrecacheResource("model_folder", "models/heroes/dragon_knight", context)
+  PrecacheResource("model_folder", "models/items/dragon_knight", context)
+  PrecacheResource("model_folder", "models/heroes/sven", context)
+  PrecacheResource("model_folder", "models/items/sven", context)
 
   -- Particle effect applied to the flag holder.
   PrecacheResource("particle", "particles/econ/courier/courier_golden_roshan/golden_roshan_ambient.vpcf", context)

@@ -31,7 +31,7 @@
         "AttributeBaseIntelligence" "10"
         // armor
         "ArmorPhysical"				      "0"
-			  "MagicalResistance"				  "0"
+        "MagicalResistance"				  "0"
     }
 
     "npc_dota_hero_sven"
@@ -62,6 +62,6 @@
         "AttributeBaseIntelligence" "10"
         // armor
         "ArmorPhysical"				      "0"
-			  "MagicalResistance"				  "0"
+        "MagicalResistance"				  "0"
     }
 }
