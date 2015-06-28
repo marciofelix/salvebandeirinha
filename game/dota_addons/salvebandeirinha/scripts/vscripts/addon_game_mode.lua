@@ -20,9 +20,10 @@ end
 
 -- Precache things we know we'll use.
 function Precache(context)
-  -- Flag models.
+  -- Items models.
   PrecacheItemByNameSync("item_capture_good_flag", context)
   PrecacheItemByNameSync("item_capture_bad_flag", context)
+  PrecacheResource("model_folder", "models/items/wards", context)
 
   -- Hero Models.
   PrecacheResource("model_folder", "models/heroes/dragon_knight", context)
