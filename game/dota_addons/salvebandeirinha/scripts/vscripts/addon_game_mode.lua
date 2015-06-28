@@ -12,7 +12,7 @@ end
 
 if CONSTANTS == nil then
   CONSTANTS = {}
-  CONSTANTS.scoreToWin = 5
+  CONSTANTS.scoreToWin = 10
   CONSTANTS.goodGuysHero = "npc_dota_hero_dragon_knight"
   CONSTANTS.badGuysHero = "npc_dota_hero_sven"
   CONSTANTS.goldForPoint = 150
@@ -119,6 +119,7 @@ end
 function GM:OnNPCSpawned(keys)
   local hero = EntIndexToHScript(keys.entindex)
   if hero:IsHero() then
+    print("OnNPCSpawned zerando pontos de habilidade")
     hero:SetAbilityPoints(0)
   end
 end
@@ -141,6 +142,18 @@ function GM:OnEntityHurt(keys)
   --DOTA_UNIT_CAP_MELEE_ATTACK
   apanhou:SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)
   if apanhou:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
+    -- check if there is someone of his tem unfrozen
+    local teamg = Entities:FindAllByName(CONSTANTS.goodGuysHero)
+    local allfrozen = true
+    for k,v in pairs(teamg) do
+      if v:HasGroundMovementCapability() then
+        allfrozen = false
+      end
+    end
+    if allfrozen then
+      point(CONSTANTS.badGuysHero)
+      return
+    end
     apanhou:SetTeam(DOTA_TEAM_CUSTOM_1)
     print("tem que dropar item")
     for i = 0,5 do
@@ -156,6 +169,18 @@ function GM:OnEntityHurt(keys)
       end
     end
   elseif apanhou:GetTeamNumber() == DOTA_TEAM_BADGUYS then
+    -- check if there is someone of his tem unfrozen
+    local teamb = Entities:FindAllByName(CONSTANTS.badGuysHero)
+    local allfrozen = true
+    for k,v in pairs(teamb) do
+      if v:HasGroundMovementCapability() then
+        allfrozen = false
+      end
+    end
+    if allfrozen then
+      point(CONSTANTS.goodGuysHero)
+      return
+    end
     apanhou:SetTeam(DOTA_TEAM_CUSTOM_2)
     print("tem que dropar item")
     for i = 0,5 do
@@ -215,4 +240,58 @@ function spawnBadFlag()
   local flag = CreateItem("item_capture_bad_flag", nil, nil)
   CreateItemOnPositionSync(Vector(1920, -256, 128), flag)
   print("saiu spawnBadFlag")
+end
+
+-- arg is the name of the hero how made point
+-- remove flag from inventory and respawn flag if need
+-- reset and respawn heroes
+function point(nameHero)
+  print("ponto")
+  if nameHero == CONSTANTS.goodGuysHero then
+    print("para Radiant")
+    score.Good = score.Good + 1
+  else
+    print("para Dire")
+    score.Bad = score.Bad + 1
+  end
+  GM:updateScore(score.Good, score.Bad)
+  -- gold for the team how made point
+  local team = Entities:FindAllByName(nameHero)
+  for k,v in pairs(team) do
+    v:SetGold(CONSTANTS.goldForPoint, true)
+  end
+  -- reset heroes of good guys e drop/respawn flag if need
+  local teamg = Entities:FindAllByName(CONSTANTS.goodGuysHero)
+  for k,v in pairs(teamg) do
+    for i = 0,5 do
+      local item = v:GetItemInSlot(i)
+      if item then
+        if item:GetAbilityName() == "item_capture_bad_flag" then
+          UTIL_RemoveImmediate(item)
+          spawnBadFlag()
+        end
+      end
+    end
+    v:SetTeam(DOTA_TEAM_GOODGUYS)
+    v:SetMoveCapability(DOTA_UNIT_CAP_MOVE_GROUND)
+    v:SetAttackCapability(DOTA_UNIT_CAP_MELEE_ATTACK)
+    v:SetTimeUntilRespawn(0)
+  end
+  -- reset heroes of bad guys e drop/respawn flag if need
+  local teamb = Entities:FindAllByName(CONSTANTS.badGuysHero)
+  for k,v in pairs(teamb) do
+    for i = 0,5 do
+      local item = v:GetItemInSlot(i)
+      if item then
+        if item:GetAbilityName() == "item_capture_good_flag" then
+          UTIL_RemoveImmediate(item)
+          spawnGoodFlag()
+        end
+      end
+    end
+    v:SetTeam(DOTA_TEAM_BADGUYS)
+    v:SetMoveCapability(DOTA_UNIT_CAP_MOVE_GROUND)
+    v:SetAttackCapability(DOTA_UNIT_CAP_MELEE_ATTACK)
+    v:SetTimeUntilRespawn(0)
+  end
 end
