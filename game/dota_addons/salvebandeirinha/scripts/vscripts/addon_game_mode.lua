@@ -141,7 +141,10 @@ function GM:OnEntityHurt(keys)
   --DOTA_UNIT_CAP_NO_ATTACK
   --DOTA_UNIT_CAP_MELEE_ATTACK
   apanhou:SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)
+  -- create item to apply modifier
+  local itemmod = CreateItem("item_apply_modifiers", bateu, bateu)
   if apanhou:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
+    itemmod:ApplyDataDrivenModifier(bateu, apanhou, "modifier_mute", {duration=-1})
     -- check if there is someone of his tem unfrozen
     local teamg = Entities:FindAllByName(CONSTANTS.goodGuysHero)
     local allfrozen = true
@@ -169,6 +172,7 @@ function GM:OnEntityHurt(keys)
       end
     end
   elseif apanhou:GetTeamNumber() == DOTA_TEAM_BADGUYS then
+    itemmod:ApplyDataDrivenModifier(bateu, apanhou, "modifier_mute", {duration=-1})
     -- check if there is someone of his tem unfrozen
     local teamb = Entities:FindAllByName(CONSTANTS.badGuysHero)
     local allfrozen = true
@@ -200,12 +204,14 @@ function GM:OnEntityHurt(keys)
       apanhou:SetMoveCapability(DOTA_UNIT_CAP_MOVE_GROUND)
       apanhou:SetAttackCapability(DOTA_UNIT_CAP_MELEE_ATTACK)
       apanhou:SetTeam(DOTA_TEAM_GOODGUYS)
+      apanhou:RemoveModifierByName("modifier_mute")
     end
   elseif apanhou:GetTeamNumber() == DOTA_TEAM_CUSTOM_2 then
     if bateu:GetTeamNumber() == DOTA_TEAM_BADGUYS then
       apanhou:SetMoveCapability(DOTA_UNIT_CAP_MOVE_GROUND)
       apanhou:SetAttackCapability(DOTA_UNIT_CAP_MELEE_ATTACK)
       apanhou:SetTeam(DOTA_TEAM_BADGUYS)
+      apanhou:RemoveModifierByName("modifier_mute")
     end
   end
 end
@@ -258,7 +264,7 @@ function point(nameHero)
   -- gold for the team how made point
   local team = Entities:FindAllByName(nameHero)
   for k,v in pairs(team) do
-    v:SetGold(CONSTANTS.goldForPoint, true)
+    v:SetGold(v:GetGold() + CONSTANTS.goldForPoint, false)
   end
   -- reset heroes of good guys e drop/respawn flag if need
   local teamg = Entities:FindAllByName(CONSTANTS.goodGuysHero)
@@ -275,6 +281,7 @@ function point(nameHero)
     v:SetTeam(DOTA_TEAM_GOODGUYS)
     v:SetMoveCapability(DOTA_UNIT_CAP_MOVE_GROUND)
     v:SetAttackCapability(DOTA_UNIT_CAP_MELEE_ATTACK)
+    v:RemoveModifierByName("modifier_mute")
     v:SetTimeUntilRespawn(0)
   end
   -- reset heroes of bad guys e drop/respawn flag if need
@@ -292,6 +299,7 @@ function point(nameHero)
     v:SetTeam(DOTA_TEAM_BADGUYS)
     v:SetMoveCapability(DOTA_UNIT_CAP_MOVE_GROUND)
     v:SetAttackCapability(DOTA_UNIT_CAP_MELEE_ATTACK)
+    v:RemoveModifierByName("modifier_mute")
     v:SetTimeUntilRespawn(0)
   end
 end

@@ -12,8 +12,8 @@
         "Ability3"                  "REMOVE"
         "Ability4"                  "REMOVE"
         "Ability5"                  "REMOVE"
-        "VisionDaytimeRange"        "1200"
-        "VisionNighttimeRange"      "1000"
+        "VisionDaytimeRange"        "1000"
+        "VisionNighttimeRange"      "800"
         // attack
         "AttackDamageMin"           "1"
         "AttackDamageMax"           "1"
@@ -43,8 +43,8 @@
         "Ability3"                  "REMOVE"
         "Ability4"                  "REMOVE"
         "Ability5"                  "REMOVE"
-        "VisionDaytimeRange"        "1200"
-        "VisionNighttimeRange"      "1000"
+        "VisionDaytimeRange"        "1000"
+        "VisionNighttimeRange"      "800"
         // attack
         "AttackDamageMin"           "1"
         "AttackDamageMax"           "1"
