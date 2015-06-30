@@ -1,153 +1,152 @@
 "DOTAAbilities"
 {
-    //==============================================================================================
-    // Good Flag
-    //==============================================================================================
-    "item_capture_good_flag"
+  //==============================================================================================
+  // Good Flag
+  //==============================================================================================
+  "item_capture_good_flag"
+  {
+    "BaseClass"           "item_datadriven"
+    "AbilityTextureName"  "capture_good_flag"
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "ID"                 "1101"
+    "AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "Model"              "models\props_teams\banner_radiant.mdl"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                    "9999"
+    "ItemShopTags"                "damage"
+    "ItemQuality"                 "rare"
+    "ItemAliases"                 "radiant flag"
+    "ItemShareability"            "ITEM_FULLY_SHAREABLE"
+    "ItemSellable"                "0"
+    "ItemKillable"                "0"
+    "ItemDeclarations"            "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS | DECLARE_PURCHASES_IN_SPEECH"
+    "ItemContributesToNetWorthWhenDropped"    "0"
+    "ItemDroppable"                           "1"
+
+    "OnSpellStart"
     {
-          "BaseClass"           "item_datadriven"
-          "AbilityTextureName"  "capture_good_flag"
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "ID"                 "1101"
-        "AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-        "Model"              "models\props_teams\banner_radiant.mdl"
-
-        // Item Info
-        //-------------------------------------------------------------------------------------------------------------
-        "ItemCost"                    "9999"
-        "ItemShopTags"                "damage"
-        "ItemQuality"                 "rare"
-        "ItemAliases"                 "radiant flag"
-        "ItemShareability"            "ITEM_FULLY_SHAREABLE"
-        "ItemSellable"                "0"
-        "ItemKillable"                "0"
-        "ItemDeclarations"            "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS | DECLARE_PURCHASES_IN_SPEECH"
-        "ItemContributesToNetWorthWhenDropped"    "0"
-        "ItemDroppable"                           "1"
-        
-        "OnSpellStart"
-        {
-            "ApplyModifier"
-            {
-                "Target"              "CASTER"
-                "ModifierName"        "the_weight_good_flag"
-            }
-        }
-        "OnEquip"
-        {
-            "DelayedAction"
-            {
-                "Delay"            "0.1"
-                "Action"
-                {
-                    "RunScript"
-                    {
-                        "ScriptFile"      "items.lua"
-                        "Function"        "pickOrReturnGoodFlag"
-                    }
-                }
-            }
-        }
-        
-        // Stats
-        "Modifiers"
-        {
-            "the_weight_good_flag"
-            {
-                "Passive"           "1"
-                "EffectName"        "particles/econ/courier/courier_golden_roshan/golden_roshan_ambient.vpcf"
-                "EffectAttachType"  "follow_origin"
-
-                "Properties"
-                {
-                    "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%movespeed_bonus"
-                }
-            }
-        }
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"          "FIELD_INTEGER"
-                "movespeed_bonus"    "-30"
-            }
-        }
+      "ApplyModifier"
+      {
+        "Target"              "CASTER"
+        "ModifierName"        "the_weight_good_flag"
+      }
     }
-    
-      //==============================================================================================
-    // Bad Flag
-    //==============================================================================================
-    "item_capture_bad_flag"
+    "OnEquip"
     {
-        "BaseClass"                "item_datadriven"
-        "AbilityTextureName"    "capture_bad_flag"
-        
-        // General
-        "ID"                "1102"
-        "AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-        "Model"             "models\props_teams\banner_dire_small.mdl"
-
-        // Item Info
-        "ItemCost"          "9999"
-        "ItemShopTags"      "damage"
-        "ItemQuality"       "artifact"
-        "ItemAliases"       "dire flag"
-        "ItemShareability"  "ITEM_FULLY_SHAREABLE"
-        "ItemSellable"      "0"
-        "ItemKillable"      "0"
-        "ItemDeclarations"    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS | DECLARE_PURCHASES_IN_SPEECH"
-        "ItemContributesToNetWorthWhenDropped"  "0"
-        "ItemDroppable"                           "1"
-        
-        "OnSpellStart"
+      "DelayedAction"
+      {
+        "Delay"            "0.1"
+        "Action"
         {
-            "ApplyModifier"
-            {
-                "Target"        "CASTER"
-                "ModifierName"    "the_weight_bad_flag"
-            }
+          "RunScript"
+          {
+            "ScriptFile"      "items.lua"
+            "Function"        "pickOrReturnGoodFlag"
+          }
         }
-        "OnEquip"
-        {
-            "DelayedAction"
-            {
-                "Delay" "0.1"
-                "Action"
-                {
-                    "RunScript"
-                    {
-                        "ScriptFile"    "items.lua"
-                        "Function"      "pickOrReturnBadFlag"
-                    }
-                }
-            }
-        }
-
-        // Stats
-        "Modifiers"
-        {
-            "the_weight_bad_flag"
-            {
-                "Passive"           "1"
-                "EffectName"        "particles/econ/courier/courier_golden_roshan/golden_roshan_ambient.vpcf"
-                "EffectAttachType"  "follow_origin"
-
-                "Properties"
-                {
-                    "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%movespeed_bonus"
-                }
-            }
-        }
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"          "FIELD_INTEGER"
-                "movespeed_bonus"   "-30"
-            }
-        }
+      }
     }
+
+    // Stats
+    "Modifiers"
+    {
+      "the_weight_good_flag"
+      {
+        "Passive"           "1"
+        "EffectName"        "particles/econ/courier/courier_golden_roshan/golden_roshan_ambient.vpcf"
+        "EffectAttachType"  "follow_origin"
+
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%movespeed_bonus"
+        }
+      }
+    }
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "movespeed_bonus"    "-30"
+      }
+    }
+  }
+  //==============================================================================================
+  // Bad Flag
+  //==============================================================================================
+  "item_capture_bad_flag"
+  {
+    "BaseClass"                "item_datadriven"
+    "AbilityTextureName"    "capture_bad_flag"
+
+    // General
+    "ID"                "1102"
+    "AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "Model"             "models\props_teams\banner_dire_small.mdl"
+
+    // Item Info
+    "ItemCost"          "9999"
+    "ItemShopTags"      "damage"
+    "ItemQuality"       "artifact"
+    "ItemAliases"       "dire flag"
+    "ItemShareability"  "ITEM_FULLY_SHAREABLE"
+    "ItemSellable"      "0"
+    "ItemKillable"      "0"
+    "ItemDeclarations"    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS | DECLARE_PURCHASES_IN_SPEECH"
+    "ItemContributesToNetWorthWhenDropped"  "0"
+    "ItemDroppable"                           "1"
+
+    "OnSpellStart"
+    {
+      "ApplyModifier"
+      {
+        "Target"        "CASTER"
+        "ModifierName"    "the_weight_bad_flag"
+      }
+    }
+    "OnEquip"
+    {
+      "DelayedAction"
+      {
+        "Delay" "0.1"
+        "Action"
+        {
+        "RunScript"
+        {
+          "ScriptFile"    "items.lua"
+          "Function"      "pickOrReturnBadFlag"
+        }
+        }
+      }
+    }
+
+    // Stats
+    "Modifiers"
+    {
+      "the_weight_bad_flag"
+      {
+        "Passive"           "1"
+        "EffectName"        "particles/econ/courier/courier_golden_roshan/golden_roshan_ambient.vpcf"
+        "EffectAttachType"  "follow_origin"
+
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%movespeed_bonus"
+        }
+      }
+    }
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "movespeed_bonus"   "-30"
+      }
+    }
+  }
   //==============================================================================================
   // Item to apply modifiers
   //==============================================================================================

@@ -2,76 +2,82 @@
  
 "dota_shops"
 {
-        "consumables"
-        {
-          "item"  "item_ward_observer"
-          "item"  "item_ward_sentry"
-        }
- 
-        "attributes"
-        {
-        
-        }
- 
-        "weapons_armor"
-        {
-          "item"  "item_boots"
-          "item"  "item_blades_of_attack"
-          "item"  "item_phase_boots"
-          "item"  "item_blink"
-        }
- 
-        "misc"
-        {
-          
-        }      
- 
-        // Level 1 - Green Recipes
-        "basics"
-        {
-   
-        }
- 
-        // Level 2 - Blue Recipes
-        "support"
-        {
- 
-        }
- 
-        "magics"
-        {
-       
-        }
- 
-        // Level 3 - Purple Recipes
-        "defense"
-        {
-       
-        }
- 
-        "weapons"
-        {
-               
-        }
- 
-        // Level 4 - Orange / Orb / Artifacts
-        "artifacts"
-        {
-               
-        }
- 
-        "sideshop1"
-        {
- 
-        }
- 
-        "sideshop2"
-        {
- 
-        }
- 
-        "secretshop"
-        {
- 
-        }
+  "consumables"
+  {
+    "item"  "item_ward_observer"
+    "item"  "item_ward_sentry"
+  }
+
+  "attributes"
+  {
+    "item"  "item_quelling_blade"
+  }
+
+  "weapons_armor"
+  {
+    "item"  "item_boots"
+    "item"  "item_blades_of_attack"
+    "item"  "item_phase_boots"
+    "item"  "item_blink"
+  }
+
+  "misc"
+  {
+    
+  }      
+
+  // Level 1 - Green Recipes
+  "basics"
+  {
+
+  }
+
+  // Level 2 - Blue Recipes
+  "support"
+  {
+
+  }
+
+  "magics"
+  {
+
+  }
+
+  // Level 3 - Purple Recipes
+  "defense"
+  {
+
+  }
+
+  "weapons"
+  {
+
+  }
+
+  // Level 4 - Orange / Orb / Artifacts
+  "artifacts"
+  {
+
+  }
+
+  "sideshop1"
+  {
+
+  }
+
+  "sideshop2"
+  {
+
+  }
+
+  "secretshop"
+  {
+    "item"  "item_ward_observer"
+    "item"  "item_ward_sentry"
+    "item"  "item_quelling_blade"
+    "item"  "item_boots"
+    "item"  "item_blades_of_attack"
+    "item"  "item_phase_boots"
+    "item"  "item_blink"
+  }
 }

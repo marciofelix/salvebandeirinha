@@ -132,6 +132,10 @@ function GM:OnEntityHurt(keys)
   local bateu = EntIndexToHScript(keys.entindex_attacker)
   local apanhou = EntIndexToHScript(keys.entindex_killed)
 
+  if apanhou:IsHero() == false then
+    return
+  end
+
   print("time bateu: "..bateu:GetTeamNumber())
   print("time apanhou: "..apanhou:GetTeamNumber())
   

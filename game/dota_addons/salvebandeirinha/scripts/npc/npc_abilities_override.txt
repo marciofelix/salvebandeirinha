@@ -1,7 +1,6 @@
 // Dota Abilities Override File
 "DOTAAbilities"
 {
-
 	//=================================================================================================================
 	// Blink dagger
 	//=================================================================================================================
@@ -56,6 +55,7 @@
 //  "item_ward_observer"                    "REMOVE"
 //  "item_ward_sentry"                      "REMOVE"
 //  "item_blades_of_attack"                 "REMOVE"
+//  "item_quelling_blade"                   "REMOVE"
 	// ITEM SHOPS---------------------------------------------------
   "item_recipe_travel_boots_2"            "REMOVE"
   "item_travel_boots_2"                   "REMOVE"
@@ -76,7 +76,6 @@
   "item_mithril_hammer"                   "REMOVE"
   "item_platemail"                        "REMOVE"
   "item_quarterstaff"                     "REMOVE"
-  "item_quelling_blade"                   "REMOVE"
   "item_ring_of_protection"               "REMOVE"
   "item_stout_shield"                     "REMOVE"
   "item_gauntlets"                        "REMOVE"
