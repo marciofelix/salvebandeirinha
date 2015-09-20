@@ -1,5 +1,5 @@
 //<map_name>_shops.txt inside a scripts\shops\ folder
- 
+
 "dota_shops"
 {
   "consumables"
@@ -16,14 +16,13 @@
   "weapons_armor"
   {
     "item"  "item_boots"
-    "item"  "item_blades_of_attack"
     "item"  "item_phase_boots"
-    "item"  "item_blink"
   }
 
   "misc"
   {
-    
+    "item"  "item_blink"
+    "item"  "item_invis_sword"
   }      
 
   // Level 1 - Green Recipes
@@ -76,8 +75,8 @@
     "item"  "item_ward_sentry"
     "item"  "item_quelling_blade"
     "item"  "item_boots"
-    "item"  "item_blades_of_attack"
     "item"  "item_phase_boots"
     "item"  "item_blink"
+    "item"  "item_invis_sword"
   }
 }
