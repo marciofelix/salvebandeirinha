@@ -16,6 +16,13 @@ if CONSTANTS == nil then
   CONSTANTS.goodGuysHero = "npc_dota_hero_dragon_knight"
   CONSTANTS.badGuysHero = "npc_dota_hero_sven"
   CONSTANTS.goldForPoint = 150
+  CONSTANTS.goldForCatch = 15
+  CONSTANTS.goldForSave = 10
+  -- using this for scoreboard
+  -- deny is point
+  -- kill is catch
+  -- death is be caught
+  -- assist is save a friend
 end
 
 -- Precache things we know we'll use.
@@ -62,7 +69,7 @@ function GM:InitGameMode()
   GameRules:SetSameHeroSelectionEnabled(true)
   GameRules:SetHeroSelectionTime(0.0)
   GameRules:SetPreGameTime(0.0)
-  GameRules:SetPostGameTime(5.0)
+  GameRules:SetPostGameTime(120.0)
   
   print("[Salve Bandeirinha] Gamemode rules are set.")
   print("[Salve Bandeirinha] Gamemode rules are set.")
@@ -148,6 +155,9 @@ function GM:OnEntityHurt(keys)
   -- create item to apply modifier
   local itemmod = CreateItem("item_apply_modifiers", bateu, bateu)
   if apanhou:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
+    giveTeamGold (CONSTANTS.badGuysHero, CONSTANTS.goldForCatch)
+    bateu:IncrementKills(apanhou:GetPlayerID());
+    apanhou:IncrementDeaths(bateu:GetPlayerID());
     itemmod:ApplyDataDrivenModifier(bateu, apanhou, "modifier_mute", {duration=-1})
     -- check if there is someone of his tem unfrozen
     local teamg = Entities:FindAllByName(CONSTANTS.goodGuysHero)
@@ -159,6 +169,7 @@ function GM:OnEntityHurt(keys)
     end
     if allfrozen then
       point(CONSTANTS.badGuysHero)
+      bateu:IncrementDenies()
       return
     end
     apanhou:SetTeam(DOTA_TEAM_CUSTOM_1)
@@ -176,6 +187,9 @@ function GM:OnEntityHurt(keys)
       end
     end
   elseif apanhou:GetTeamNumber() == DOTA_TEAM_BADGUYS then
+    giveTeamGold (CONSTANTS.goodGuysHero, CONSTANTS.goldForCatch)
+    bateu:IncrementKills(apanhou:GetPlayerID());
+    apanhou:IncrementDeaths(bateu:GetPlayerID());
     itemmod:ApplyDataDrivenModifier(bateu, apanhou, "modifier_mute", {duration=-1})
     -- check if there is someone of his tem unfrozen
     local teamb = Entities:FindAllByName(CONSTANTS.badGuysHero)
@@ -187,6 +201,7 @@ function GM:OnEntityHurt(keys)
     end
     if allfrozen then
       point(CONSTANTS.goodGuysHero)
+      bateu:IncrementDenies()
       return
     end
     apanhou:SetTeam(DOTA_TEAM_CUSTOM_2)
@@ -205,6 +220,8 @@ function GM:OnEntityHurt(keys)
     end
   elseif apanhou:GetTeamNumber() == DOTA_TEAM_CUSTOM_1 then
     if bateu:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
+      giveTeamGold (CONSTANTS.goodGuysHero, CONSTANTS.goldForSave)
+      bateu:IncrementAssists(apanhou:GetPlayerID());
       apanhou:SetMoveCapability(DOTA_UNIT_CAP_MOVE_GROUND)
       apanhou:SetAttackCapability(DOTA_UNIT_CAP_MELEE_ATTACK)
       apanhou:SetTeam(DOTA_TEAM_GOODGUYS)
@@ -212,6 +229,8 @@ function GM:OnEntityHurt(keys)
     end
   elseif apanhou:GetTeamNumber() == DOTA_TEAM_CUSTOM_2 then
     if bateu:GetTeamNumber() == DOTA_TEAM_BADGUYS then
+      giveTeamGold (CONSTANTS.badGuysHero, CONSTANTS.goldForSave)
+      bateu:IncrementAssists(apanhou:GetPlayerID());
       apanhou:SetMoveCapability(DOTA_UNIT_CAP_MOVE_GROUND)
       apanhou:SetAttackCapability(DOTA_UNIT_CAP_MELEE_ATTACK)
       apanhou:SetTeam(DOTA_TEAM_BADGUYS)
@@ -266,10 +285,7 @@ function point(nameHero)
   end
   GM:updateScore(score.Good, score.Bad)
   -- gold for the team how made point
-  local team = Entities:FindAllByName(nameHero)
-  for k,v in pairs(team) do
-    v:SetGold(v:GetGold() + CONSTANTS.goldForPoint, false)
-  end
+  giveTeamGold (nameHero, CONSTANTS.goldForPoint)
   -- reset heroes of good guys e drop/respawn flag if need
   local teamg = Entities:FindAllByName(CONSTANTS.goodGuysHero)
   for k,v in pairs(teamg) do
@@ -307,3 +323,11 @@ function point(nameHero)
     v:SetTimeUntilRespawn(0)
   end
 end
+
+function giveTeamGold (nameTeam, gold)
+  local team = Entities:FindAllByName(nameTeam)
+  for k,v in pairs(team) do
+    v:SetGold(v:GetGold() + gold, false)
+  end
+end
+

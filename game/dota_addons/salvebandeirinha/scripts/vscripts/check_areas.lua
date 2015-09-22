@@ -12,6 +12,7 @@ function enterGoodArea(trigger)
       if item then
         if item:GetAbilityName() == "item_capture_bad_flag" then
           point(CONSTANTS.goodGuysHero)
+          unit:IncrementDenies()
         end
       end
     end
@@ -30,6 +31,7 @@ function enterBadArea(trigger)
       if item then
         if item:GetAbilityName() == "item_capture_good_flag" then
           point(CONSTANTS.badGuysHero)
+          unit:IncrementDenies()
         end
       end
     end
